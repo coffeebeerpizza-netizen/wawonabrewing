@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Wawona Brewing</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+
+  <!-- ── SPLASH ─────────────────────────────────────────────────────────── -->
+  <div id="screen-splash" class="screen active">
+    <div class="splash-content">
+
+      <img src="Images/logo.png" alt="Wawona Brewing" class="splash-logo"
+           onerror="this.style.display='none'">
+
+      <div class="splash-text">
+        <div class="splash-eyebrow">Wawona</div>
+        <h1 class="splash-title">Brewing Co.</h1>
+      </div>
+
+      <p class="splash-tagline">What's brewing — rate what's on tap</p>
+
+      <div class="splash-actions">
+        <button class="btn-primary" onclick="showScreen('app')">Rate This Week's Taps</button>
+        <button class="btn-secondary" onclick="showScreen('scorecard')">My Scorecard</button>
+        <button class="btn-secondary" onclick="showScreen('history')">History</button>
+      </div>
+
+      <div class="splash-footer">
+        <div id="splash-status" class="splash-status">Loading tap list…</div>
+        <button id="admin-lock-btn" class="admin-lock-btn"
+                onclick="showPinModal()" title="Admin access">🔒</button>
+      </div>
+      <div id="admin-badge" class="admin-badge hidden">⚙ Admin Mode</div>
+    </div>
+  </div>
+
+  <!-- ── APP ────────────────────────────────────────────────────────────── -->
+  <div id="screen-app" class="screen">
+    <div class="app-nav">
+      <button class="nav-back" onclick="showScreen('splash')">← Tap List</button>
+      <div class="nav-title">On Tap</div>
+      <button class="nav-fav" id="fav-filter-btn" title="Show favorites">★</button>
+    </div>
+
+    <div class="app-search">
+      <input id="search-input" class="search-input" type="search" placeholder="Search beers…" autocomplete="off">
+    </div>
+
+    <div id="beer-list-container" class="beer-list-container">
+      <div id="beer-list" class="beer-list"></div>
+      <div id="detail" class="detail"></div>
+    </div>
+  </div>
+
+  <!-- ── HISTORY ───────────────────────────────────────────────────────── -->
+  <div id="screen-history" class="screen">
+    <div class="app-nav">
+      <button class="nav-back" onclick="showScreen('splash')">← Tap List</button>
+      <div class="nav-title">History</div>
+      <div></div>
+    </div>
+    <div id="history-content" class="history-content"></div>
+  </div>
+
+  <!-- ── SCORECARD ──────────────────────────────────────────────────────── -->
+  <div id="screen-scorecard" class="screen">
+    <div class="app-nav">
+      <button class="nav-back" onclick="showScreen('splash')">← Tap List</button>
+      <div class="nav-title">My Scorecard</div>
+      <div></div>
+    </div>
+    <div id="scorecard-content" class="scorecard-content"></div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
