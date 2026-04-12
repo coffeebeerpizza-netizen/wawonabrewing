@@ -449,15 +449,19 @@ function buildHistory() {
       </div>
       <div class="history-card-right">
         ${score !== null ? `<div class="score-badge">${score}</div>` : ''}
-        ${isAdmin() ? '<button class="restore-btn">Restore</button>' : ''}
       </div>
     `;
 
+    // Restore button created programmatically — only admins ever see it
     if (isAdmin()) {
-      card.querySelector('.restore-btn').addEventListener('click', () => {
+      const restoreBtn = document.createElement('button');
+      restoreBtn.className = 'restore-btn';
+      restoreBtn.textContent = 'Restore';
+      restoreBtn.addEventListener('click', () => {
         setVal(beer.slug, 'retired', false);
         buildHistory();
       });
+      card.querySelector('.history-card-right').appendChild(restoreBtn);
     }
 
     list.appendChild(card);
@@ -826,6 +830,7 @@ function buildScorecard() {
 
   rated.forEach(beer => {
     const retired = isRetired(beer.slug);
+    const isFav   = getVal(beer.slug, 'fav') === true;
     const row = document.createElement('div');
     row.className = 'scorecard-row' + (retired ? ' scorecard-row-retired' : '');
     row.innerHTML = `
@@ -834,7 +839,10 @@ function buildScorecard() {
         ${beer.brewery ? `<div class="scorecard-brewery">${esc(beer.brewery)}</div>` : ''}
         ${retired ? '<div class="scorecard-retired-badge">Archived</div>' : ''}
       </div>
-      <div class="scorecard-score">${beer.score}</div>
+      <div class="scorecard-right">
+        ${isFav ? '<div class="scorecard-fav">★</div>' : ''}
+        <div class="scorecard-score">${beer.score}</div>
+      </div>
       <div class="scorecard-arrow">›</div>
     `;
     row.addEventListener('click', () => {
