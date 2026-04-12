@@ -107,10 +107,18 @@ function showPinModal() {
   overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
 }
 
+// ── SPLASH STATUS ─────────────────────────────────────────────────────────────
+function updateSplashStatus() {
+  const active = BEERS.filter(b => !isRetired(b.slug)).length;
+  const el = document.getElementById('splash-status');
+  if (el) el.textContent = `${active} beer${active !== 1 ? 's' : ''} on tap`;
+}
+
 // ── NAVIGATION ────────────────────────────────────────────────────────────────
 function showScreen(name) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(`screen-${name}`).classList.add('active');
+  if (name === 'splash')    updateSplashStatus();
   if (name === 'scorecard') buildScorecard();
   if (name === 'history')   buildHistory();
   if (name === 'app') {
@@ -215,6 +223,7 @@ function openBeer(idx) {
       adminBtn.title = 'Put back on tap';
       adminBtn.addEventListener('click', () => {
         setVal(beer.slug, 'retired', false);
+        updateSplashStatus();
         closeDetail();
       });
     } else {
@@ -223,6 +232,7 @@ function openBeer(idx) {
       adminBtn.title = 'Remove from current tap list';
       adminBtn.addEventListener('click', () => {
         setVal(beer.slug, 'retired', true);
+        updateSplashStatus();
         closeDetail();
       });
     }
@@ -459,6 +469,7 @@ function buildHistory() {
       restoreBtn.textContent = 'Restore';
       restoreBtn.addEventListener('click', () => {
         setVal(beer.slug, 'retired', false);
+        updateSplashStatus();
         buildHistory();
       });
       card.querySelector('.history-card-right').appendChild(restoreBtn);
@@ -901,9 +912,7 @@ async function initApp() {
         brew_notes: (r.brewers_notes  || '').trim(),
       }));
 
-    const active = BEERS.filter(b => !isRetired(b.slug)).length;
-    document.getElementById('splash-status').textContent =
-      `${active} beer${active !== 1 ? 's' : ''} on tap`;
+    updateSplashStatus();
   } catch (err) {
     console.error('Sheet load failed:', err);
     BEERS = getDefaultBeers();
