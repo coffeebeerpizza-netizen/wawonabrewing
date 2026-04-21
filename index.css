@@ -2,16 +2,16 @@
 :root {
   --bg:           #f4f1e8;   /* warm parchment */
   --surface:      #ffffff;
-  --surface-hi:   #dff0e4;   /* hovered surface */
-  --green:        #1e5c2a;   /* Wawona brand green */
-  --green-light:  #2d7a3a;
-  --green-pale:   #d6eedd;   /* tag background */
-  --amber:        #c07a20;
-  --amber-light:  #e09525;
-  --ink:          #1a2b1c;
-  --muted:        #5a7060;
-  --border:       #ccd9c0;
-  --slider-track: #d0e8c8;
+  --surface-hi:   #FCEBD8;   /* hovered surface */
+  --green:        #E86100;   /* Halloween orange — primary */
+  --green-light:  #F07D1A;
+  --green-pale:   #FCEBD8;   /* tag background */
+  --amber:        #1e5c2a;   /* original green — secondary */
+  --amber-light:  #2d7a3a;
+  --ink:          #1a1a12;
+  --muted:        #6b6b5a;
+  --border:       #F0C898;
+  --slider-track: #F5D4B0;
   --radius:       6px;
   --radius-lg:    10px;
 
@@ -244,9 +244,9 @@ textarea, input { font-family: var(--font-body); }
   cursor: pointer;
   transition: background 0.12s, box-shadow 0.12s, transform 0.1s;
   animation: fadeUp 0.28s both;
-  box-shadow: 0 1px 4px rgba(30,92,42,0.05);
+  box-shadow: 0 1px 4px rgba(232,97,0,0.05);
 }
-.beer-card:hover  { box-shadow: 0 3px 10px rgba(30,92,42,0.1); }
+.beer-card:hover  { box-shadow: 0 3px 10px rgba(232,97,0,0.1); }
 .beer-card:active { background: var(--surface-hi); transform: scale(0.99); }
 
 @keyframes fadeUp {
@@ -343,9 +343,9 @@ textarea, input { font-family: var(--font-body); }
   padding: 0.18rem 0.5rem;
   border-radius: 999px;
 }
-.tag-style  { background: var(--green-pale); color: var(--green); border: 1px solid #acd4b8; }
-.tag-bjcp   { background: #e8f5e8; color: var(--green); border: 1px solid #b8ddb8; }
-.tag-abv    { background: #fef3e2; color: var(--amber); border: 1px solid #f5d8a0; }
+.tag-style  { background: var(--green-pale); color: var(--green); border: 1px solid #F0B87A; }
+.tag-bjcp   { background: #FCEBD8; color: var(--green); border: 1px solid #F0C090; }
+.tag-abv    { background: #d6eedd; color: var(--amber); border: 1px solid #acd4b8; }
 .tag-origin { background: var(--bg); color: var(--muted); border: 1px solid var(--border); }
 
 .beer-card-notes {
@@ -575,7 +575,7 @@ textarea, input { font-family: var(--font-body); }
   height: 20px;
   border-radius: 50%;
   background: var(--green);
-  box-shadow: 0 1px 5px rgba(30,92,42,0.35);
+  box-shadow: 0 1px 5px rgba(232,97,0,0.35);
   cursor: pointer;
   transition: transform 0.1s;
 }
@@ -587,7 +587,7 @@ textarea, input { font-family: var(--font-body); }
   border-radius: 50%;
   background: var(--green);
   border: none;
-  box-shadow: 0 1px 5px rgba(30,92,42,0.35);
+  box-shadow: 0 1px 5px rgba(232,97,0,0.35);
   cursor: pointer;
 }
 
@@ -658,7 +658,7 @@ textarea, input { font-family: var(--font-body); }
   height: 24px;
   border-radius: 50%;
   background: var(--green);
-  box-shadow: 0 2px 6px rgba(30,92,42,0.35);
+  box-shadow: 0 2px 6px rgba(232,97,0,0.35);
   cursor: pointer;
   transition: transform 0.1s;
 }
@@ -669,7 +669,7 @@ textarea, input { font-family: var(--font-body); }
   border-radius: 50%;
   background: var(--green);
   border: none;
-  box-shadow: 0 2px 6px rgba(30,92,42,0.35);
+  box-shadow: 0 2px 6px rgba(232,97,0,0.35);
 }
 
 /* ── SPIDER CHART ──────────────────────────────────────────────────────── */
@@ -710,7 +710,7 @@ textarea, input { font-family: var(--font-body); }
 }
 
 .spider-data {
-  fill: rgba(30, 92, 42, 0.12);
+  fill: rgba(232, 97, 0, 0.12);
   stroke: var(--green);
   stroke-width: 2;
   stroke-linejoin: round;
@@ -777,9 +777,9 @@ textarea, input { font-family: var(--font-body); }
   cursor: pointer;
   gap: 0.75rem;
   transition: box-shadow 0.12s;
-  box-shadow: 0 1px 3px rgba(30,92,42,0.05);
+  box-shadow: 0 1px 3px rgba(232,97,0,0.05);
 }
-.scorecard-row:hover { box-shadow: 0 3px 10px rgba(30,92,42,0.1); }
+.scorecard-row:hover { box-shadow: 0 3px 10px rgba(232,97,0,0.1); }
 
 .scorecard-info { flex: 1; min-width: 0; }
 
@@ -1115,7 +1115,7 @@ textarea, input { font-family: var(--font-body); }
 .pin-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 26, 18, 0.55);
+  background: rgba(20, 15, 10, 0.55);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   display: flex;
