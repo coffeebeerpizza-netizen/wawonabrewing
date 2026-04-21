@@ -76,7 +76,7 @@ textarea, input { font-family: var(--font-body); }
 }
 
 .splash-eyebrow {
-  font-size: 0.65rem;
+  font-size: clamp(2rem, 8vw, 3rem);
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
